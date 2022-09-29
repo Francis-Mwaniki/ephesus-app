@@ -1,4 +1,10 @@
 {
-  "cSpell.words": ["Iexisting", "Iuser", "tailwindcss", "toastification"],
+  "cSpell.words": [
+    "bycrypt",
+    "Iexisting",
+    "Iuser",
+    "tailwindcss",
+    "toastification"
+  ],
   "vue3snippets.enable-compile-vue-file-on-did-save-code": true
 }

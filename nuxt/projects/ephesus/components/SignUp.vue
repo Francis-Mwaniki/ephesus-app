@@ -130,6 +130,7 @@
 <script setup>
 import { Form, Field, ErrorMessage } from "vee-validate";
 import * as yup from "yup";
+import { useRegisterStore } from "~~/composables/registerStore";
 const registerStore = useRegisterStore();
 
 let user = ref({
@@ -137,17 +138,17 @@ let user = ref({
   password: "",
   repeatPassword: "",
 });
+
 const schema = yup.object({
   email: yup.string().required().email(),
   password: yup.string().required().min(8),
   repeatPassword: yup.string().required().min(8),
   rememberMe: yup.boolean(),
 });
-function onSubmit(values) {
-  let results = JSON.stringify({ user });
-  /* registerStore.create(values) */
-  console.log(user.email.value);
-  /* registerStore.create(user); */
+function onSubmit() {
+  let results = JSON.stringify(user.value);
+  console.log(results);
+  registerStore.create(results);
 }
 onMounted(() => {});
 </script>

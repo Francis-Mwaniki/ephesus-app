@@ -1,14 +1,14 @@
 import { defineStore } from "pinia";
-import { Iuser } from "~~/types";
+import { IexistingUser } from "~~/types";
 import useToast from "./useToast";
-export const useRegisterStore = defineStore("register-store", {
+export const useLoginStore = defineStore("login-store", {
   state: () => ({
-    users: [] as Iuser[],
+    users: [] as IexistingUser[],
   }),
   actions: {
     //create a new book
-    async create(user: Iuser) {
-      await $fetch("/api/register/create", {
+    async create(user: IexistingUser) {
+      await $fetch("/api/login/create", {
         method: "POST",
         body: user,
       })
@@ -16,7 +16,7 @@ export const useRegisterStore = defineStore("register-store", {
           useToast().error(err.data.message);
         })
         .then(async (res) => {
-          let successMsg = "signed in successfully";
+          let successMsg = "logged in successfully";
           let msg = await res.message;
           if (msg == successMsg) return useToast().success(successMsg);
           useToast().error(msg);
